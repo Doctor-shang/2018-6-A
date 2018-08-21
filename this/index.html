@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function fn1() {
+    console.log( 'a1=' + this.a1 );
+}
+var a1 = 1;
+fn1(); //fn1在全局环境下执行,那么this = 全局,所以a1=1
+console.log('-------------------------------------------------')
+function fn2() {
+    console.log('a2='+this.a2)
+}
+var obj2 = {
+    a2: 2,
+    fn2: fn2
+}
+obj2.fn2(); //fn2在obj下执行,this = obj2
+console.log('-------------------------------------------------')
+function fn3() {
+    console.log('a3='+this.a3)
+}
+var obj3 = {
+    a3: 666,
+    fn3: fn3
+}
+var obj3_ = {
+    a3: 3,
+    obj3: obj3
+}
+obj3_.obj3.fn3(); //fn3在obj3下执行,this = obj3
+console.log('-------------------------------------------------')
+function fn4() {
+    console.log('a4='+this.a4)
+}
+var obj4 = {
+    a4: 2,
+    fn4: fn4
+}
+var bar = obj4.fn4; //fn4后没有括号,即把fn4整个函数赋给了bar
+var a4 = "全局"; 
+bar(); //全局执行bar,this=全局
+console.log('-------------------------------------------------')
+function fn5() {
+    console.log( 'a5='+this.a5 );
+}
+var obj5 = {
+    a5: 5
+};
+fn5.call( obj5 ); //call(obj5)就是把obj5作为fn5的执行环境
+console.log('-------------------------------------------------')
+function fn6() {
+    console.log('a6='+this.a6);
+}
+var obj6 = {
+    a6: 2
+};
+var a6 = 10;
+fn6.call(null); //当call不传参的时候,fn6的执行环境为全局
+console.log('-------------------------------------------------')
+function person(name) {
+    this.name_ = name;
+}
+var p = new person('sth');
+console.log(p.name_); //当构造函数被new的时候,this绑定新创建的对象
+</script>
+</body>
+</html>
