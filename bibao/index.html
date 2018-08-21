@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var x = 2; //全局变量
+        function fn() {
+            var x = 1; //局部变量
+        }
+        console.log(x) //这里输出2,因为这里拿不到局部变量
+        
+        console.log('///////////////////////////////////////////////////////////////')
+        var data0 = [];
+        for (var i = 0; i < 3; i++) {
+            data0[i] = function () { //这里的data0[i]定义完以后i的值没有储存,所以调用的时候在function里面找不到i的值,就会到更上一级的for找,找到的是3
+                // debugger
+                console.log(i)
+            }
+        }
+        data0[0]()
+        data0[1]()
+        data0[2]() //333
+        
+        console.log('///////////////////////////////////////////////////////////////')
+        var data1 = [];
+        for (var i = 0; i < 3; i++) { //这里(function)(i)就是一个闭包,function储存了i的值,所以输出012
+            (function (i) { 
+                // debugger
+                data1[i] = function () {
+                    console.log(i)
+                }
+            })(i);
+        }
+        data1[0]();
+        data1[1]();
+        data1[2](); //012
+        console.log('///////////////////////////////////////////////////////////////')
+        var data3 = [];
+        for (var i = 0; i < 3; i++) { //这里function并没有往里传值,所以没得存,只能去更上一级的for找值
+            (function () { 
+                // debugger
+                data3[i] = function () {
+                    console.log(i)
+                }
+            })(i);
+        }
+        data3[0]();
+        data3[1]();
+        data3[2](); //333
+        console.log('///////////////////////////////////////////////////////////////')
+        var data2 = [];
+        for (var i = 0; i < 3; i++) {
+            data2[i] = (function (i) { //闭包储存了i的值
+                return function () {
+                    console.log(i);
+                }
+            })(i);
+        }
+        data2[0]();
+        data2[1]();
+        data2[2](); //012
+        console.log('///////////////////////////////////////////////////////////////')
+        
+
+    </script>
+</body>
+
+</html>

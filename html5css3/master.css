@@ -1,0 +1,56 @@
+.clip{
+    text-overflow:clip; 
+    overflow:hidden; 
+    white-space:nowrap; 
+    width:200px;
+    background:#ccc;
+} 
+.ellipsis{
+    text-overflow:ellipsis; 
+    overflow:hidden; 
+    white-space:nowrap; 
+    width:200px; 
+    background:#ccc;
+} 
+.text { 
+    font-weight: bold;
+    font-size: 50px;
+    -webkit-text-fill-color: black;  /*文字内部填充颜色*/
+    -webkit-text-stroke-color: red;  /*文字边界填充颜色*/
+    -webkit-text-stroke-width: 3px;  /*文字边界宽度*/
+}
+.multi-column-style{ 
+    -webkit-column-count: 3;   /*表示布局几列*/
+    -webkit-column-rule: 1px solid #bbb;  /*表示列与列之间的间隔条的样式*/
+    -webkit-column-gap: 2em;  /*表示列于列之间的间隔*/
+} 
+.gradient{
+    width: 200px;
+    height: 100px;
+    background: #08c;
+    background: -moz-linear-gradient(top,  #0fc 0%, #08c 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0fc), color-stop(100%,#08c));
+    background: -webkit-linear-gradient(top,  #0fc 0%,#08c 100%);
+    background: -o-linear-gradient(top,  #0fc 0%,#08c 100%);
+    background: -ms-linear-gradient(top,  #0fc 0%,#08c 100%);
+    background: linear-gradient(top,  #0fc 0%,#08c 100%);
+}
+.cirle{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background: radial-gradient(circle 100px at 90px 90px, #fff, #08c);
+}
+.a{
+    width: 800px;
+    height: 506px;
+    animation:mymove 2s infinite steps(1, start) ;
+}
+@keyframes mymove
+{
+    20%   {background: url(1.jpg);}
+    40%  {background: url(2.jpg);}
+    60%  {background: url(3.jpg);}
+    80%  {background: url(4.jpg);}
+    100%  {background: url(5.jpg);}
+}

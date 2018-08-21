@@ -1,0 +1,39 @@
+.flex-box{
+    display: flex;
+    width: 800px;
+    height: 300px;
+    box-sizing: border-box;
+    background: #86c;
+    padding: 10px;
+    flex-direction: row; 
+    /* 定义主方向 */
+    flex-wrap: nowrap; 
+    /* 定义换行 */
+    justify-content: space-around; 
+    /* 定义子元素在主轴上的对齐方式 */
+    align-items: center; 
+    /* 定义子元素在交叉轴上的对齐方式 */
+    align-content: flex-start; 
+    /* 定义多根轴线的对齐方式 */
+}
+.flex-item{
+    flex: 0 0 100px;
+    height: 100px;
+    background: #f8c;
+    margin: 5px 5px;
+    line-height: 100px;
+    text-align: center;
+    flex-grow: 1;
+    /* 如果一行没装满,是否放大 */
+    flex-shrink: 1;
+    /* 如果一行放不下,且不换行,是否缩小 */
+}
+.flex-item:nth-child(1){
+    order: 0;
+    /* 定义排列顺序,默认为0,从小到大 */
+    flex-basis:500px;
+    /* 分配flex剩余空间,0不分配 */
+    align-self: flex-end; 
+    /* 设置与众不同对齐方式 */
+
+}

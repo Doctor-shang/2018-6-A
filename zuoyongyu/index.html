@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        var value = 1;
+
+        function foo() {
+            //foo在这里定义,这里foo输出value=1,那么不管foo什么时候在什么地方被调用,都会输出value=1
+            console.log(value);
+        }
+
+        function bar() {
+            var value = 2;
+            foo();
+        }
+        bar();
+        //////////////////////////////////////////////////////////////////////////
+        var scope = "global scope";
+
+        function checkscope() {
+            var scope = "local scope";
+
+            function f() {
+                //f在这里定义,这里输出local scope,那么不管f什么时候在什么地方被调用,都会输出local scope
+                console.log(scope);
+            }
+            return f();
+        }
+        checkscope();
+        //////////////////////////////////////////////////////////////////////////
+        var scope_ = "global scope";
+
+        function checkscope_() {
+            var scope_ = "local scope";
+
+            function f() {
+                //f在这里定义,这里输出local scope,那么不管f什么时候在什么地方被调用,都会输出local scope
+                console.log(scope_);
+            }
+            return f;
+        }
+        checkscope_()();
+        //return f代表返回函数本身
+        //return f()代表返回函数的执行结果
+        //在javascript中甭管函数在哪里调用,输出的值一定是函数定义的地方输出的值
+    </pre>
+    <script>
+        var value = 1;
+
+        function foo() {
+            //foo在这里定义,这里foo输出value=1,那么不管foo什么时候在什么地方被调用,都会输出value=1
+            console.log(value);
+        }
+
+        function bar() {
+            var value = 2;
+            foo();
+        }
+        bar();
+        //////////////////////////////////////////////////////////////////////////
+        var scope = "global scope";
+
+        function checkscope() {
+            var scope = "local scope";
+
+            function f() {
+                //f在这里定义,这里输出local scope,那么不管f什么时候在什么地方被调用,都会输出local scope
+                console.log(scope);
+            }
+            return f();
+        }
+        checkscope();
+        //////////////////////////////////////////////////////////////////////////
+        var scope_ = "global scope";
+
+        function checkscope_() {
+            var scope_ = "local scope";
+
+            function f() {
+                //f在这里定义,这里输出local scope,那么不管f什么时候在什么地方被调用,都会输出local scope
+                console.log(scope_);
+            }
+            return f;
+        }
+        checkscope_()();
+        //return f代表返回函数本身
+        //return f()代表返回函数的执行结果
+        //在javascript中甭管函数在哪里调用,输出的值一定是函数定义的地方输出的值
+    </script>
+</body>
+
+</html>
