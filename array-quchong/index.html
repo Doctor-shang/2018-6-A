@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    var arr = [1,1,2,'2',3,5]
+    var arr0 = [3,2,'2',3,5,6,8,3,5,2,{value: 1}, {value: 1}, {value: 2}, {}, {}, [],[]];
+    function unique1(arr) {
+        var res = []; //定义空数组
+        for (let i = 0; i < arr.length; i++) { //遍历老数组
+            if (res.indexOf(arr[i]) === -1) { //新数组里面如果没有这个值
+                res.push(arr[i]) //就把这个值加到新数组里面
+            }
+        }
+        return res; //返回新数组
+    }
+    var arr1 = unique1(arr);
+    console.log(arr1);
+
+
+    function unique2(arr) {
+        var sArr = arr.concat().sort(); //排序---concat是复制数组，避免污染原数组
+        // console.log(sArr)
+        var fn = function (index, i, array) { //几个分别是arr的第i位,第i位的索引值,arr数组
+            var x = !i || index !== array[i-1]; //当这一位与上一位不相等的时候,保留这一位
+            return x;
+        }
+        var res = sArr.filter(fn); //filter根据传进去的函数的返回值决定这个值的去留
+        return res;
+    }
+    var arr2 = unique2(arr)
+    console.log(arr2)
+
+
+    function unique(arr) {
+        var tmp = [];
+        var hash = {}; //用来储存
+        for (var i = 0; i < arr.length; i++) {
+            var key = typeof(arr[i]) + JSON.stringify(arr[i]); //保存变量类型以及变量的值---JSON.stringify() 方法将 JavaScript 对象转换为字符串
+            // debugger
+            if(hash[key] !== 1) { //如果这个数据被储存过一次,那么就不增加到tmp
+                tmp.push(arr[i]) //如果这个数据没有被储存过,就加到tmp里面
+                hash[key] = 1; //把key作为hash对象的键储存起来
+                // debugger
+            }
+        }
+        return tmp;
+    }
+    var arr3 = unique(arr0);
+    console.log(arr3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    var arr0 = [3,2,'2',3,5,6,8,3,5,2,2,2,22,];
+    function unique3(arr) {
+        var arr_ = arr.concat().sort();
+        var fn = function (index, i, array) {
+            var x = !i || index !== array[i-1];
+            return x
+        }
+        var sarr = arr_.filter(fn);
+        return sarr
+    }
+    var arr3 = unique3(arr0)
+    console.log(arr3)
+</script>
+</body>
+</html>
