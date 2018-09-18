@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            font-size: 50px;
+            position: absolute;
+            top: 120px;
+            left: 300px;
+        }
+        span{
+            font-size: 50px;
+            position: absolute;
+            left: 300px;
+            top: 350px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./笔记.jpg" alt="">
+    <a target="_blank" href="http://note.youdao.com/noteshare?id=83f92d08bc52f57d07ad41dfcd9fdff1&sub=E622DE9E36BB4869B496A41A57E9BF90">笔记传送门</a>
+    <br>
+    <img src="./作业.jpg" alt="">
+    <span>在控制台看</span>
+
+<script>
+// string number array function boolean object NaN null
+function judgetype (val){
+    var type = typeof val;
+    switch (type) {
+        case 'string':
+            console.log('这是一个字符类型的值')
+            break;
+        case 'number':
+            if(isNaN(val)){ //检测是不是NaN
+                console.log('这是NaN')
+            }else{
+                console.log('这是一个数字类型的值')
+            }
+            break;
+        case 'boolean':
+            console.log('这是一个布尔类型的值')
+            break;
+        case 'object':
+            if(!val){ //检测是不是null
+                console.log('这是null')
+            }
+            else if(val instanceof Array){ //判断是不是数组
+                console.log('这是一个数组类型的值')
+            }else{
+                console.log('这是一个对象类型的值')
+            }
+            // else if(val.length || val.length == 0){ //检测length属性是否存在或为0
+            //     console.log('这是一个数组类型的值')
+            // }else{
+            //     console.log('这是一个对象类型的值')
+            // }
+            break;
+        case 'function':
+            console.log('这是一个事件类型的值')
+            break;
+        default:
+            console.log('未知类型')
+            break;
+
+    }
+}
+//测试judgetype()
+console.log("---------------测试judgetype()----------------")
+judgetype('123')
+judgetype(123)
+judgetype([])
+judgetype(false)
+judgetype({})
+judgetype(NaN)
+judgetype(null)
+judgetype(function(){})
+
+
+
+
+function judgetype2 (val){
+    var type = val instanceof Array
+    switch (type) {
+        case true:
+            console.log('这是一个数组类型的值')
+            break;
+        default:
+            console.log('这是一个对象类型的值')
+            break;
+    }
+}
+//测试judgetype2
+console.log('---------------测试judgetype2()----------------')
+judgetype2([])
+judgetype2({})
+
+
+
+
+
+function judgetype3 (val){
+    var type = Object.prototype.toString.call(val);
+    switch (type) {
+        case '[object Object]':
+            console.log('这是一个对象类型的值')
+            break;
+        case '[object String]':
+            console.log('这是一个字符串类型的值')
+            break;
+        case '[object Number]':
+            if (isNaN(val)) {
+                console.log('这是NaN')
+            } else {
+                console.log('这是一个数字类型的值')
+            }
+            break;
+        case '[object Array]':
+            console.log('这是一个数组类型的值')
+            break;
+        case '[object Null]':
+            console.log('这是null')
+            break;
+        case '[object Function]':
+            console.log('这是一个事件类型的值')
+            break;
+        case '[object Boolean]':
+            console.log('这是一个布尔类型的值')
+            break;
+        default:
+            console.log('未知类型')
+            break;
+    }
+}
+//测试judgetype3
+console.log('---------------测试judgetype3()----------------')
+judgetype3('123')
+judgetype3(123)
+judgetype3([])
+judgetype3(false)
+judgetype3({})
+judgetype3(NaN)
+judgetype3(null)
+judgetype3(function(){})
+
+
+
+
+
+
+//利用构造器当F()被定义的时候,js引擎会给F()添加prototype属性,然后在prototype属性上添加constructor属性,并指向F(),当F()被new的时候,原型对象上的constructor会传到f上,所以f.constructor === F()
+//字符串可以看做new String得出来的东西,所以string.constructor === String()
+//测试judgetype4
+console.log('---------------测试judgetype4()----------------')
+console.log('123'.constructor); //String()
+console.log((123).constructor); //Number()
+console.log(true.constructor); //Boolean()
+console.log([].constructor); //Array()
+console.log(NaN.constructor); //Number()
+</script>
+</body>
+</html>
