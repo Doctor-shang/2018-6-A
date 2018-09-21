@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.zybuluo.com/mishi/note/1289145">传送门</a>
+</body>
+<script>
+//浅拷贝
+var obj0 = {
+    a:1,
+}
+var obj1 = obj0;
+obj1.a = 2;
+console.log('obj0.a:',obj0.a);
+
+var arr = ['old',1,true];
+var newarr = arr.concat();
+newarr[0] = 'new';
+console.log(arr);
+console.log(newarr);
+
+var arr1 = [{a : 1},1,2];
+var newarr1 = arr1.slice();
+newarr1[0].a = 2;
+console.log(arr1);
+console.log(newarr1);
+
+var arr2 = [{a : 1},1,2];
+var newarr2 = JSON.parse(JSON.stringify(arr2));
+newarr2[0].a = 2;
+console.log(arr2);
+console.log(newarr2);
+
+var arr3 = ['old', {name: 'old'}, ['old'], function () {console.log('old')}, { fn: function () {console.log('old')} }, 1, true, null, undefined];
+var newarr3 = JSON.parse(JSON.stringify(arr3));
+console.log(arr3);
+console.log(newarr3);
+
+function deepCopy(obj) {
+    if (typeof obj !== 'object') return; //检测数组和对象,如果不是以上两种,直接跳出
+    var newObj = obj instanceof Array ? [] : {}; //检测传进来的数据类型
+    for (var key in obj) { //遍历传进来的对象
+        if (obj.hasOwnProperty(key)) { //判断是否是自带的,而不是通过原型链继承的
+            newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key]; //判断每一项的数据类型,如果是obj或者arr就再循环一次,不是的话就直接赋值
+        }
+    }
+    return newObj; //返回新数组
+}
+</script>
+</html>
