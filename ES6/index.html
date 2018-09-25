@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //变量声明
+        //es6有var let const三种声明方式
+        const name = 'sth';
+        //声明完是不能更改的,只读,不然报错
+        // 
+        
+        let age = 20;
+        console.log(age); //写上面会报错,因为let不能变量提升
+
+        if(1 < 2){
+            let gf = 'wmj';
+        }
+        //console.log(gf); //也报错,因为let定义的变量是块状作用域,只能在花括号内读取
+
+    //模板字符串
+        const sayHi = `我是${name},我今年${age}岁,我长得贼好看!`
+        console.log(sayHi)
+
+    //默认参数
+        function log(name = 'ssss') {
+            console.log(name);
+        }
+        log() //  World
+        log('tttt')
+        //es5写法
+        function log2(name){
+            name = name || 'sth'
+        }
+
+    //箭头函数
+        //箭头函数不需要通过 function 关键字创建函数，并且还可以省略 return 关键字。 
+        const drink = (milk) =>{
+            console.log(`喝${milk}`)
+        }
+        drink('82年拉菲')
+        //同时，箭头函数还会继承当前上下文的 this 关键字，即：函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+        var car = {
+            name : 'BMW',
+            say : function(){
+                const foo = () =>{
+                    console.log(this.name)
+                }
+                return foo
+            }
+        }
+        car.say()()
+
+    //模块化
+        // //a.js
+        // function eat(){
+        //     console.log('111')
+        // }
+        // export{
+        //     eat
+        // }
+        // //b.js
+        // import a from './a'
+        // //import { make } from './a'
+        // //make()
+        // //import * as comeon from './a'
+        // //common.XXX()
+
+    //对象和数组
+        let [a, b, c] = [1, 2, 3];
+        console.log(a)
+        console.log(b)
+        console.log(c)
+
+        let {foo,bar} = {foo:'foo',bar:'bar'} //键名必须一致
+        console.log(foo)
+
+        function add([x , y]){ //函数中也可以解构
+            return x + y
+        }
+        console.log(add([2,4]))
+
+    //属性的简介表示
+        const abc = 'abc';
+        const obj = {abc};
+        console.log(obj)
+
+    //方法简写
+        var obj2 = {
+            method(){
+                console.log('方法简写')
+            }
+        }
+        obj2.method()
+
+    //拓展运算符
+        const arr = [1,2,3,4,5,6];
+        const arr2 = [...arr,7]
+        console.log(arr2)
+
+    //获取部分数组
+        const [first,...rest] = arr
+        console.log(rest)
+
+    //代替apply
+        function fun(a,b,c){
+
+        }
+        const args = [1,2,3];
+        fun.apply(null,args);
+        fun(...args)
+
+    //组装对象
+        const obja = {a:1,b:2};
+        const objb = {...obja,c:3};
+        console.log(objb)
+
+    //promise
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
