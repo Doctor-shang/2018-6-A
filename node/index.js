@@ -16,3 +16,5 @@ const app = http.createServer(function(req, res){
 app.listen('8080',function(){
     console.log('开启8080端口 ')
 })
+
+//笔记https://www.zybuluo.com/mishi/note/1296551
